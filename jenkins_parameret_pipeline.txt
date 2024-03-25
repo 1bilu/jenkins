@@ -1,0 +1,54 @@
+pipeline{
+    agent any
+    environment{
+        name="global_variable"
+    }
+    parameters{
+        string(name:'persion', defaultValue:'check', description: 'how are you')
+        booleanParam(name:'ismale', defaultValue:true, description:"")
+        choice(name:'city',choices:['jaipur','delhi','bhankrota'] , description:"")
+    }
+    stages{
+        stage("testing"){
+            steps{
+                echo "testing the code"
+                sh 'echo ${BUILD_ID}'
+            }
+            
+        }
+        stage("build"){
+            steps{
+                echo "testing the code"
+                sh 'echo ${BUILD_ID}'
+            }
+            
+        }
+        stage("deploy"){
+            steps{
+                echo "testing the code"
+                sh 'echo ${name}'
+            }
+            
+        }
+        stage("enviroment_variable locally"){
+            environment{
+             name="local_variable"
+            }
+            steps{
+                echo "to checkinfg the locally "
+                sh 'echo ${name}'
+            }
+            
+        }
+        
+        stage("paramet"){
+            steps{
+                echo "checking paramete"
+                sh 'echo ${persion}'
+                sh 'echo ${ismale}'
+                sh 'echo ${city}'
+            }
+            
+        }
+    }
+}

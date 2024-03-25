@@ -1,0 +1,39 @@
+pipeline{
+    agent any
+    environment{
+        name="global_variable"
+    }
+    stages{
+        stage("testing"){
+            steps{
+                echo "testing the code"
+                sh 'echo ${BUILD_ID}'
+            }
+            
+        }
+        stage("build"){
+            steps{
+                echo "testing the code"
+                sh 'echo ${BUILD_ID}'
+            }
+            
+        }
+        stage("deploy"){
+            steps{
+                echo "testing the code"
+                sh 'echo ${name}'
+            }
+            
+        }
+        stage("enviroment_variable locally"){
+            environment{
+             name="local_variable"
+            }
+            steps{
+                echo "to checkinfg the locally "
+                sh 'echo ${name}'
+            }
+            
+        }
+    }
+}
